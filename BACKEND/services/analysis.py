@@ -7,23 +7,21 @@ from BACKEND.engine.prediction_engine import predict_trade
 
 def analyze_market():
 
-    # Calculate indicators
     indicators = calculate_indicators()
 
-    # Detect trend
     trend = detect_trend(indicators)
 
-    # Build evidence
     evidence = build_evidence(indicators)
 
-    # Make trading decision
     decision = make_decision(indicators)
 
-    # Predict trade setup
     prediction = predict_trade(indicators)
 
-    # Return complete analysis
+    reason = " | ".join(evidence)
+
     return {
+        "pair": "XAUUSD",
+
         "price": indicators["price"],
         "ema20": indicators["ema20"],
         "ema50": indicators["ema50"],
@@ -41,6 +39,8 @@ def analyze_market():
         "stop_loss": prediction["stop_loss"],
         "take_profit": prediction["take_profit"],
         "risk_reward": prediction["risk_reward"],
+
+        "reason": reason,
 
         "evidence": evidence
     }
