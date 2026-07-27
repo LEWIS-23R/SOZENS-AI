@@ -1,4 +1,4 @@
-def make_decision(indicators, evidence):
+def make_decision(indicators):
 
     score = 0
 
