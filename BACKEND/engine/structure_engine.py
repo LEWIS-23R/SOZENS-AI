@@ -10,32 +10,50 @@ def detect_structure():
     highs = df["High"].tolist()
     lows = df["Low"].tolist()
 
-    latest_swing_high = None
-    latest_swing_low = None
+    swing_highs = []
+    swing_lows = []
 
-    # Detect Swing High
+    # Detect Swing Highs
     for i in range(2, len(highs) - 2):
-
         if (
-            highs[i] > highs[i-1]
-            and highs[i] > highs[i-2]
-            and highs[i] > highs[i+1]
-            and highs[i] > highs[i+2]
+            highs[i] > highs[i - 1]
+            and highs[i] > highs[i - 2]
+            and highs[i] > highs[i + 1]
+            and highs[i] > highs[i + 2]
         ):
-            latest_swing_high = highs[i]
+            swing_highs.append(highs[i])
 
-    # Detect Swing Low
+    # Detect Swing Lows
     for i in range(2, len(lows) - 2):
-
         if (
-            lows[i] < lows[i-1]
-            and lows[i] < lows[i-2]
-            and lows[i] < lows[i+1]
-            and lows[i] < lows[i+2]
+            lows[i] < lows[i - 1]
+            and lows[i] < lows[i - 2]
+            and lows[i] < lows[i + 1]
+            and lows[i] < lows[i + 2]
         ):
-            latest_swing_low = lows[i]
+            swing_lows.append(lows[i])
+
+    structure = "Unknown"
+
+    if len(swing_highs) >= 2 and len(swing_lows) >= 2:
+
+        last_high = swing_highs[-1]
+        prev_high = swing_highs[-2]
+
+        last_low = swing_lows[-1]
+        prev_low = swing_lows[-2]
+
+        if last_high > prev_high and last_low > prev_low:
+            structure = "Bullish"
+
+        elif last_high < prev_high and last_low < prev_low:
+            structure = "Bearish"
+
+        else:
+            structure = "Sideways"
 
     return {
-        "latest_swing_high": round(latest_swing_high, 2) if latest_swing_high else None,
-        "latest_swing_low": round(latest_swing_low, 2) if latest_swing_low else None,
+        "market_structure": structure,
+        "latest_swing_high": round(swing_highs[-1], 2) if swing_highs else None,
+        "latest_swing_low": round(swing_lows[-1], 2) if swing_lows else None,
     }

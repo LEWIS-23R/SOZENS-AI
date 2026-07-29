@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOZENS AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h1>🐂</h1>
+
+            <h2>SOZENS AI</h2>
+
+            <p>Trade Smarter.</p>
+
+        </div>
+
+        <nav>
+
+            <a href="#" class="active">🏠 Dashboard</a>
+
+            <a href="#">📈 Analysis</a>
+
+            <a href="#">📊 History</a>
+
+            <a href="#">📒 Journal</a>
+
+            <a href="#">⚙ Settings</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Trading Terminal</h1>
+
+                <span class="live">🟢 LIVE</span>
+
+            </div>
+
+            <button onclick="loadAnalysis()">
+
+                Analyze Market
+
+            </button>
+
+        </header>
+
+        <!-- Cards -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>Pair</h3>
+
+                <h2 id="pair">--</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Price</h3>
+
+                <h2 id="price">--</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Signal</h3>
+
+                <h2 id="signal">--</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Confidence</h3>
+
+                <h2 id="confidence">--</h2>
+
+            </div>
+
+        </section>
+
+        <!-- Trade Setup -->
+
+        <section class="trade-grid">
+
+            <div class="panel">
+
+                <h2>Trade Setup</h2>
+
+                <div class="row">
+
+                    <span>Entry</span>
+
+                    <strong id="entry">--</strong>
+
+                </div>
+
+                <div class="row">
+
+                    <span>Stop Loss</span>
+
+                    <strong id="sl">--</strong>
+
+                </div>
+
+                <div class="row">
+
+                    <span>Take Profit</span>
+
+                    <strong id="tp">--</strong>
+
+                </div>
+
+                <div class="row">
+
+                    <span>Risk Reward</span>
+
+                    <strong id="rr">--</strong>
+
+                </div>
+
+            </div>
+
+            <div class="panel">
+
+                <h2>AI Reasoning</h2>
+
+                <p id="reason">
+
+                    Waiting for market analysis...
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
